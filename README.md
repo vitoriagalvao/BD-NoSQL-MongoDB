@@ -1,6 +1,6 @@
-Exercicios da Semana - resolução!
+# Exercicios da Semana - resolução!
 
-Inserção de documentos
+## Inserção de documentos
 
 db.MoviesOn12.insert({"id": 1,
         "title": "10 Things I Hate About You",
@@ -17,7 +17,7 @@ db.MoviesOn12.insert({"id": 1,
         "country": "USA",
         "awards": "2 wins & 13 nominations."})
 
-Atualização de documentos
+## Atualização de documentos
 
 db.getCollection('MoviesOn12').update(
     { "title" : "Doctor Strange" },
@@ -28,14 +28,18 @@ db.getCollection('MoviesOn12').update(
     }
 );
 
-Exclusão de documentos
+## Exclusão de documentos
 
 db.MoviesOn12.remove({ "year": "2009"})
 
-Consulta com projeção
+## Consulta com projeção
 
 db.getCollection('MoviesOn12').find({},{"title" : 1, "_id" : 0})
 
-Consulta utilizando combinação entre os seletores
+## Consulta utilizando combinação entre os seletores
 
-Consulta paginada e ordenada (utilizar skip, limit e sort)
+db.getCollection('MoviesOn12').find({$or:[{"genre": /.*Action.*/},{"genre": /.*Comedy.*/}]})
+
+## Consulta paginada e ordenada (utilizar skip, limit e sort)
+db.getCollection('MoviesOn12').find({}).limit(3)
+db.getCollection('MoviesOn12').find().sort({"director": 1})
